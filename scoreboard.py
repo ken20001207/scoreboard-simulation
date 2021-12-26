@@ -183,16 +183,20 @@ class Scoreboard:
 
     self.clock += 1
 
+def clearConsole():
+  print('\n' * 100)
 
 if __name__ == '__main__':
   sb = ScoreboardParser.scoreboard_for_asm(ASM_FILE)
 
   while not sb.done():
     sb.tick()
-
-  # display the final results
-  print('                               Read      Execute   Write    ')
-  print('                        Issue  Operands  Complete  Result   ')
-  print('                    ----------------------------------------')
-  for instruction in sb.instructions:
-    print(str(instruction))
+    clearConsole()
+    print("                               Read      Execute   Write    ")
+    print("                        Issue  Operands  Complete  Result   ")
+    print("                    ----------------------------------------")
+    for instruction in sb.instructions:
+        print(str(instruction))
+    print("\n\n")
+    print(str(sb))
+    input()
